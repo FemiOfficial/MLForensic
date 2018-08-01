@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.alayesanmifemi.mlforensic.MainActivity"
+    tools:showIn="@layout/activity_main"
+    android:background="@drawable/crime">
+
+
+<LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_marginTop="20dp"
+        android:padding="20dp">
+
+    <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="match_parent"
+        android:layout_height="130dp"
+        app:srcCompat="@mipmap/search"
+        android:layout_marginBottom="0dp"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="MLForensics"
+        android:layout_gravity="center"
+        android:textScaleX="1.1"
+        android:textColor="#fbd6f7"
+        android:textSize="25dp" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Object Detection Mobile App for Crime Evidence Analysis"
+        android:textAlignment="center"
+        android:layout_gravity="center"
+        android:textScaleX="1.1"
+        android:textColor="#fbd6f7"
+        android:textSize="15dp" />
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="SIGN IN"
+        android:textAlignment="viewStart"
+        android:textScaleX="1.1"
+        android:textColor="#fbd6f7"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="20dp"
+        android:textSize="20dp" />
+
+    <EditText
+        android:id="@+id/txt_username"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="15dp"
+        android:inputType="textEmailAddress"
+        android:background="#1a1a24"
+        android:hint="example@email.com"
+        android:padding="10dp"
+        android:textAlignment="center"
+        android:textColor="#c8dfd9"
+        android:textColorHint="#c8dfd9"
+        android:textSize="16dp" />
+
+    <EditText
+        android:id="@+id/txt_password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textPassword"
+        android:background="#1a1a24"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:hint="Password"
+        android:padding="10dp"
+        android:textAlignment="center"
+        android:textColorHint="#c8dfd9"
+        android:textColor="#c8dfd9"
+        android:textSize="16dp"
+        android:layout_marginBottom="10dp"
+        />
+
+    <Button
+        android:id="@+id/btn_login"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/gradient_1"
+        android:paddingBottom="15dp"
+        android:paddingTop="15dp"
+        android:text="LOGIN"
+        android:textColor="#fff"
+        android:textSize="20dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="15dp">
+
+        <!--<TextView-->
+            <!--android:id="@+id/forgot_pass"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_centerHorizontal="true"-->
+            <!--android:layout_weight="1"-->
+            <!--android:clickable="true"-->
+            <!--android:focusable="true"-->
+            <!--android:text="Forgot Password"-->
+            <!--android:textAlignment="viewEnd"-->
+            <!--android:textColor="#fbd6f7"-->
+            <!--android:textSize="20dp"-->
+            <!--android:textStyle="normal" />-->
+
+        <TextView
+            android:id="@+id/create_acct"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:clickable="true"
+            android:focusable="true"
+            android:layout_marginTop="27dp"
+            android:text="Don't Have an Account? Create Here"
+            android:textAlignment="center"
+            android:textColor="#fbd6f7"
+            android:textSize="15dp"
+            android:textStyle="normal" />
+    </LinearLayout>
+
+</LinearLayout>
+
+</RelativeLayout>
