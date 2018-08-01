@@ -35,12 +35,30 @@ public class Cases {
         this.weather = weather;
         this.img_thumbnail = img_thumbnail;
     }
-    public Cases(){
+
+    public Cases (){}
+
+    public Cases(String detective_id, String title, String detective, String incident_date, String location, String crimeType,
+                 String description, String arrivalTimeDate,
+                 String departureTimeDate, String weather){
+        this.incident_date = incident_date;
+        this.title = title;
+        this.location = location;
+        this.detective_id = detective_id;
+        this.detective = detective;
+        this.crimeType = crimeType;
+        this.description = description;
+        this.incident_date = incident_date;
+        this.arrivalTimeDate = arrivalTimeDate;
+        this.departureTimeDate = departureTimeDate;
+        this.weather = weather;
 
     }
 
     public String getTitle() {
+
         return title;
+
     }
 
     public void setTitle(String title) {

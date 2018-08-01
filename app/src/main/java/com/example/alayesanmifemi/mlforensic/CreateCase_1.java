@@ -28,6 +28,7 @@ import android.widget.Toast;
 public class CreateCase_1 extends Fragment {
 
     MyDBHandler dbHandler;
+    Cases cases;
 
 
     private FragmentListener listener;
@@ -77,8 +78,6 @@ public class CreateCase_1 extends Fragment {
                              Bundle savedInstanceState) {
         final View v =  inflater.inflate(R.layout.fragment_create_case_1, container, false);
 
-
-
         EditText detective_user = v.findViewById(R.id.detective_name);
         EditText detective_location = v.findViewById(R.id.incident_location);
         EditText case_title = v.findViewById((R.id.title_case));
@@ -106,21 +105,24 @@ public class CreateCase_1 extends Fragment {
 
         String detective_id = detectiveDetails[3];
 
-        final Cases cases = new Cases(detective_id, case_title.getText().toString() ,
-                detective_user.getText().toString() , date_format,
+        cases = new Cases(detective_id, case_title.getText().toString() ,
+                detective_user.getText().toString() ,date_format,
                 detective_location.getText().toString(), category.getText().toString(),
                 scene_descrip.getText().toString(),arriv_time_format,
-                depart_time_format, weather_condition.getText().toString(), R.drawable.murder );
+                depart_time_format, weather_condition.getText().toString());
 
         Button save_btn = v.findViewById(R.id.btn_save_documentation);
-
 
         save_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                try{
+                    dbHandler.createCase(cases);
+                    Snackbar.make(view, "case created", Snackbar.LENGTH_LONG).show();
+                }catch(Exception e) {
+                    Snackbar.make(view, e.getMessage(), Snackbar.LENGTH_LONG).show();
+                }
 
-                dbHandler.createCase(cases);
-                Snackbar.make(view, "Case Created Successfully", Snackbar.LENGTH_LONG).show();
             }
         });
         // Inflate the layout for this fragment

@@ -25,6 +25,7 @@ public class MyDBHandler extends SQLiteOpenHelper{
     private static final String COLUMN_ID_CASES = "case_id";
     private static final String COLUMN_TITLE_CASES = "title";
     private static final String COLUMN_LOCATION_CASES = "location";
+    private static final String COLUMN_INCIDENT_DATE = "incident_date";
     private static final String COLUMN_DETECTIVE_ID_CASES = "detective_id";
     private static final String COLUMN_CRIME_TYPE_CASES = "crime_type";
     private static final String COLUMN_DESCRIPTION_CASES = "description";
@@ -42,8 +43,8 @@ public class MyDBHandler extends SQLiteOpenHelper{
                 TABLE_USERS, COLUMN_ID_USERS, COLUMN_FIRSTNAME_USERS, COLUMN_LASTNAME_USERS, COLUMN_EMAIL_USERS, COLUMN_PASSWORD_USERS);
         db.execSQL(query);
 
-        String query2 = String.format("CREATE TABLE %s(%s INTEGER PRIMARY KEY AUTOINCREMENT, %s TEXT, %s TEXT, %s TEXT, %s TEXT, " +
-                "%s TEXT, %s TEXT, %s TEXT, %s TEXT );", TABLE_CASES, COLUMN_ID_CASES, COLUMN_TITLE_CASES, COLUMN_LOCATION_CASES, COLUMN_DETECTIVE_ID_CASES, COLUMN_CRIME_TYPE_CASES, COLUMN_DESCRIPTION_CASES, COLUMN_ARRIVAL_CASES, COLUMN_DEPARTURE_CASES, COLUMN_WEATHER_CASES);
+        String query2 = String.format("CREATE TABLE %s(%s INTEGER PRIMARY KEY AUTOINCREMENT, %s TEXT, %s TEXT, %s TEXT, %s TEXT, %s TEXT " +
+                "%s TEXT, %s TEXT, %s TEXT, %s TEXT );", TABLE_CASES, COLUMN_ID_CASES, COLUMN_TITLE_CASES, COLUMN_LOCATION_CASES, COLUMN_DETECTIVE_ID_CASES, COLUMN_CRIME_TYPE_CASES, COLUMN_DESCRIPTION_CASES, COLUMN_ARRIVAL_CASES, COLUMN_DEPARTURE_CASES, COLUMN_WEATHER_CASES, COLUMN_INCIDENT_DATE);
 
         db.execSQL(query2);
 
@@ -71,6 +72,7 @@ public class MyDBHandler extends SQLiteOpenHelper{
         values.put( COLUMN_ARRIVAL_CASES, cases.getArrivalTimeDate());
         values.put( COLUMN_DEPARTURE_CASES, cases.getDepartureTimeDate());
         values.put( COLUMN_CRIME_TYPE_CASES, cases.getCrimeType());
+        values.put(COLUMN_INCIDENT_DATE, cases.getIncident_date());
         values.put( COLUMN_DESCRIPTION_CASES, cases.getDescription());
         values.put( COLUMN_DETECTIVE_ID_CASES, cases.getDetective_id());
         values.put( COLUMN_WEATHER_CASES, cases.getWeather());
