@@ -38,14 +38,28 @@ public class Cases {
 
     public Cases (){}
 
-    public Cases(String detective_id, String title, String detective, String incident_date, String location, String crimeType,
+    public Cases(String detective_id, String title, String incident_date, String location, String crimeType,
                  String description, String arrivalTimeDate,
                  String departureTimeDate, String weather){
         this.incident_date = incident_date;
         this.title = title;
         this.location = location;
         this.detective_id = detective_id;
-        this.detective = detective;
+        this.crimeType = crimeType;
+        this.description = description;
+        this.incident_date = incident_date;
+        this.arrivalTimeDate = arrivalTimeDate;
+        this.departureTimeDate = departureTimeDate;
+        this.weather = weather;
+
+    }
+    public Cases(String title,  String location, String crimeType,
+                 String description, String arrivalTimeDate,
+                 String departureTimeDate, String weather,  String incident_date){
+        this.incident_date = incident_date;
+        this.title = title;
+        this.location = location;
+        this.detective_id = detective_id;
         this.crimeType = crimeType;
         this.description = description;
         this.incident_date = incident_date;
@@ -81,13 +95,13 @@ public class Cases {
         this.location = location;
     }
 
-    public String getDetective() {
-        return detective;
-    }
-
-    public void setDetective(String detective) {
-        this.detective = detective;
-    }
+//    public String getDetective() {
+//        return detective;
+//    }
+//
+//    public void setDetective(String detective) {
+//        this.detective = detective;
+//    }
 
     public String getDetective_id() {
         return detective_id;

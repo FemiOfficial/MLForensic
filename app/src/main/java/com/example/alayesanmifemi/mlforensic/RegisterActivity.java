@@ -1,6 +1,7 @@
 package com.example.alayesanmifemi.mlforensic;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -53,7 +54,8 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         switch (view.getId()) {
             case R.id.btn_register:
                 signUp();
-                Snackbar.make( view, "Registration Successful", Snackbar.LENGTH_LONG).show();
+//                Snackbar.make( view, "Registration Successful", Snackbar.LENGTH_LONG).show();
+
         }
     }
     public String printDB(){
@@ -61,13 +63,19 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         //test_printb.setText(dbString);
         return dbString;
     }
-
     public void signUp(){
         Users users = new Users(firstname.getText().toString(), lastname.getText().toString(),
                 email.getText().toString(), password.getText().toString());
-        dbHandler.createUser(users);
+        if(password.getText().toString().equals(co_password.getText().toString())){
+            dbHandler.createUser(users);
+            Toast.makeText(RegisterActivity.this, "Registration Successful, Proceed to Login" , Toast.LENGTH_LONG).show();
+            Intent intent = new Intent();
+            intent.setClass(this, MainActivity.class);
+            startActivity(intent);
+        }else{
+            Toast.makeText(RegisterActivity.this, "Password Entries Must Match" , Toast.LENGTH_LONG).show();
+        }
           // Toast.makeText(RegisterActivity.this, "Registration Successfull" , Toast.LENGTH_LONG).show();
-
 
            //        test_printb.setText(printDB());
      //   System.out.println(printDB());

@@ -19,7 +19,7 @@
             android:layout_width="match_parent"
             android:layout_height="160dp"
             android:scaleType="centerCrop"
-            android:background="@drawable/gradient_1"
+            android:background="@drawable/crime_scn"
             />
         <TextView
             android:id="@+id/case_title_id"

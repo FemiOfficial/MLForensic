@@ -18,7 +18,7 @@ import android.widget.Toast;
 
 //public class DocumentCaseActivity extends AppCompatActivity implements
 //        CreateCase_1.OnFragmentInteractionListener, CreateCase_2.OnFragmentInteractionListener  {
-public class DocumentCaseActivity extends AppCompatActivity implements View.OnClickListener{
+    public class DocumentCaseActivity extends AppCompatActivity implements View.OnClickListener{
 
     MyDBHandler dbHandler;
 
@@ -38,6 +38,7 @@ public class DocumentCaseActivity extends AppCompatActivity implements View.OnCl
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_document_case);
 
+       dbHandler = new MyDBHandler(this, null,null, 1);
         detective_user = findViewById(R.id.detective_name);
         detective_location = findViewById(R.id.incident_location);
         case_title = findViewById((R.id.title_case));
@@ -65,11 +66,13 @@ public class DocumentCaseActivity extends AppCompatActivity implements View.OnCl
     public void onClick(View view) {
             switch (view.getId()){
                 case R.id.btn_save_documentation:
-                    createCase();
+                    createNewCase();
+                    Snackbar.make( view, "Case Documented Successfully! ", Snackbar.LENGTH_LONG).show();
+
                     break;
             }
     }
-    public void createCase(){
+    public void createNewCase(){
         int day = incident_date.getDayOfMonth();
         int month = incident_date.getMonth();
         int year = incident_date.getYear();
@@ -87,19 +90,19 @@ public class DocumentCaseActivity extends AppCompatActivity implements View.OnCl
 
         String detective_id = detectiveDetails[3];
 
-        Cases cases = new Cases(detective_id, case_title.getText().toString() ,
-                detective_user.getText().toString() ,date_format,
+        Cases cases = new Cases(detective_id, case_title.getText().toString() ,date_format,
                 detective_location.getText().toString(), category.getText().toString(),
                 scene_descrip.getText().toString(),arriv_time_format,
                 depart_time_format, weather_condition.getText().toString());
 
-        String case_object = String.format("%s, %s, %s, %s, %s, %s, %s, %s, %s", cases.getDetective_id(), cases.getTitle()
-        , cases.getDetective(), cases.getIncident_date(), cases.getCrimeType(), cases.getDescription(), cases.getArrivalTimeDate(),
-                cases.getDepartureTimeDate(), cases.getWeather());
-        //dbHandler.createCase(cases);
-        Toast.makeText(DocumentCaseActivity.this, case_object, Toast.LENGTH_LONG).show();
+        dbHandler.createCase(cases);
+
+
+        //Toast.makeText(DocumentCaseActivity.this, cases.getLocation(), Toast.LENGTH_LONG).show();
 
     }
+
+
     public String[] getUser(){
         Intent intent = getIntent();
         String[] user = new String[4];

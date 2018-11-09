@@ -28,12 +28,10 @@ public class Profile_Activity extends AppCompatActivity {
         firstname = (EditText)findViewById(R.id.profile_first_name);
         lastname = (EditText)findViewById(R.id.profile_last_name);
         email = (EditText)findViewById(R.id.profile_email);
-
         Intent intent = getIntent();
         String user_email = intent.getExtras().getString("email");
         dbHandler = new MyDBHandler(this, null, null, 1);
-
-      String[] profileDetails = dbHandler.userProfile(user_email);
+        String[] profileDetails = dbHandler.userProfile(user_email);
 
 //      if(profileDetails[0] == null){
 //            Toast.makeText(Profile_Activity.this,  "Nothing", Toast.LENGTH_LONG).show();

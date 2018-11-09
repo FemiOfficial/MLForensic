@@ -15,8 +15,12 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+        buildType {
+        }
     }
 }
+
+
 
 
 
@@ -35,5 +39,5 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:0.5'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:2.2.2'
     testCompile 'junit:junit:4.12'
-//    compileOnly 'com.github.amigold.fundapter:library:1.0'
+    //    compileOnly 'com.github.amigold.fundapter:library:1.0'
 }

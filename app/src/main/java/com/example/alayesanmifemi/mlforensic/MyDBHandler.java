@@ -10,6 +10,7 @@ import android.content.Context;
 import android.content.ContentValues;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class MyDBHandler extends SQLiteOpenHelper{
     private static final int DATABASE_VERSION = 1;
@@ -43,7 +44,7 @@ public class MyDBHandler extends SQLiteOpenHelper{
                 TABLE_USERS, COLUMN_ID_USERS, COLUMN_FIRSTNAME_USERS, COLUMN_LASTNAME_USERS, COLUMN_EMAIL_USERS, COLUMN_PASSWORD_USERS);
         db.execSQL(query);
 
-        String query2 = String.format("CREATE TABLE %s(%s INTEGER PRIMARY KEY AUTOINCREMENT, %s TEXT, %s TEXT, %s TEXT, %s TEXT, %s TEXT " +
+        String query2 = String.format("CREATE TABLE %s(%s INTEGER PRIMARY KEY AUTOINCREMENT, %s TEXT, %s TEXT, %s TEXT, %s TEXT, %s TEXT, " +
                 "%s TEXT, %s TEXT, %s TEXT, %s TEXT );", TABLE_CASES, COLUMN_ID_CASES, COLUMN_TITLE_CASES, COLUMN_LOCATION_CASES, COLUMN_DETECTIVE_ID_CASES, COLUMN_CRIME_TYPE_CASES, COLUMN_DESCRIPTION_CASES, COLUMN_ARRIVAL_CASES, COLUMN_DEPARTURE_CASES, COLUMN_WEATHER_CASES, COLUMN_INCIDENT_DATE);
 
         db.execSQL(query2);
@@ -66,17 +67,17 @@ public class MyDBHandler extends SQLiteOpenHelper{
         db.close();
     }
 
-    public void createCase(Cases cases){
+    public void createCase(Cases casess){
         ContentValues values = new ContentValues();
-        values.put( COLUMN_TITLE_CASES, cases.getTitle());
-        values.put( COLUMN_ARRIVAL_CASES, cases.getArrivalTimeDate());
-        values.put( COLUMN_DEPARTURE_CASES, cases.getDepartureTimeDate());
-        values.put( COLUMN_CRIME_TYPE_CASES, cases.getCrimeType());
-        values.put(COLUMN_INCIDENT_DATE, cases.getIncident_date());
-        values.put( COLUMN_DESCRIPTION_CASES, cases.getDescription());
-        values.put( COLUMN_DETECTIVE_ID_CASES, cases.getDetective_id());
-        values.put( COLUMN_WEATHER_CASES, cases.getWeather());
-        values.put( COLUMN_LOCATION_CASES, cases.getLocation());
+        values.put( COLUMN_TITLE_CASES, casess.getTitle());
+        values.put( COLUMN_ARRIVAL_CASES, casess.getArrivalTimeDate());
+        values.put( COLUMN_DEPARTURE_CASES, casess.getDepartureTimeDate());
+        values.put( COLUMN_CRIME_TYPE_CASES, casess.getCrimeType());
+        values.put(COLUMN_INCIDENT_DATE, casess.getIncident_date());
+        values.put( COLUMN_DESCRIPTION_CASES, casess.getDescription());
+        values.put( COLUMN_DETECTIVE_ID_CASES, casess.getDetective_id());
+        values.put( COLUMN_WEATHER_CASES, casess.getWeather());
+        values.put( COLUMN_LOCATION_CASES, casess.getLocation());
         SQLiteDatabase db = getWritableDatabase();
         db.insert(TABLE_CASES, null, values);
         db.close();
@@ -154,7 +155,6 @@ public class MyDBHandler extends SQLiteOpenHelper{
         db.execSQL("DELETE FROM " + TABLE_CASES + " WHERE " + COLUMN_TITLE_CASES
                 + "=\"" + casetitle +  "\";"  );
     }
-
     // Display Database content in the user table
     public String userDatabase(){
         String dbString = "";
@@ -178,12 +178,10 @@ public class MyDBHandler extends SQLiteOpenHelper{
                 " password = " + password;
         db.execSQL(query);
     }
-
-    public String casesDatabase(){
+    public String casesDatabase(String id){
         String dbString = "";
         SQLiteDatabase db = getWritableDatabase();
-        String query = "SELECT * FROM " + TABLE_CASES + " WHERE 1";
-
+        String query = "SELECT * FROM " + TABLE_CASES + " WHERE detective_id = " + id ;
         Cursor c = db.rawQuery(query, null);
         c.moveToFirst();
         while (!c.isAfterLast()) {
@@ -195,7 +193,32 @@ public class MyDBHandler extends SQLiteOpenHelper{
         db.close();
         return dbString;
     }
-
-
+    public int countCases(String id){
+        SQLiteDatabase db = getWritableDatabase();
+        String query = "SELECT * FROM " + TABLE_CASES + " WHERE detective_id = " + id ;
+        Cursor c = db.rawQuery(query, null);
+        return c.getCount();
+    }
+    public ArrayList<Cases> displayCases(String id){
+        ArrayList<Cases> case_list = new ArrayList<>();
+        SQLiteDatabase db = getWritableDatabase();
+        String query = "SELECT * FROM " + TABLE_CASES + " WHERE detective_id = " + id ;
+        Cursor c = db.rawQuery(query, null);
+        if(c.moveToFirst()){
+            do{
+                case_list.add(new Cases(
+                        c.getString(1),
+                        c.getString(2),
+                        c.getString(4),
+                        c.getString(5),
+                        c.getString(6),
+                        c.getString(7),
+                        c.getString(8),
+                        c.getString(9)
+                ));
+            }while(c.moveToNext());
+        }
+        return case_list;
+    }
  }
 

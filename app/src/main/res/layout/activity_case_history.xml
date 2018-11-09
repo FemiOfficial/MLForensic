@@ -22,6 +22,20 @@
         android:orientation="vertical"
         android:padding="10dp">
 
+
+        <EditText
+            android:id="@+id/detective_name_history"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="Detective: John Doe"
+            android:textAllCaps="true"
+            android:textAlignment="center"
+            android:textColor="@color/cardBackground"
+            android:textStyle="bold"
+            android:textSize="20dp"/>
+
         <android.support.v7.widget.RecyclerView
             android:id="@+id/recyclyerview_id"
             android:layout_width="match_parent"

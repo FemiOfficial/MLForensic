@@ -105,8 +105,7 @@ public class CreateCase_1 extends Fragment {
 
         String detective_id = detectiveDetails[3];
 
-        cases = new Cases(detective_id, case_title.getText().toString() ,
-                detective_user.getText().toString() ,date_format,
+        cases = new Cases(detective_id, case_title.getText().toString() ,date_format,
                 detective_location.getText().toString(), category.getText().toString(),
                 scene_descrip.getText().toString(),arriv_time_format,
                 depart_time_format, weather_condition.getText().toString());

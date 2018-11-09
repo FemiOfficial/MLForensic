@@ -9,7 +9,6 @@
     <include
         layout="@layout/app_bar"
         android:id="@+id/app_bar">
-
     </include>
     <RelativeLayout
         android:layout_width="match_parent"

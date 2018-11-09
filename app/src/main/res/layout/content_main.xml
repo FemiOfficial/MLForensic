@@ -34,7 +34,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Object Detection Mobile App for Crime Evidence Analysis"
+        android:text="Mobile App for Criminal Case Documentation and Crime Evidence Analysis"
         android:textAlignment="center"
         android:layout_gravity="center"
         android:textScaleX="1.1"
